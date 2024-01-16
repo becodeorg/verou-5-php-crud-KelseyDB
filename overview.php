@@ -13,7 +13,11 @@
 
 <ul>
     <?php foreach ($gunpla as $mech) : ?>
-        <li><?= $mech['name'] ?></li>
+        <li><?= $mech['Name'] ?></li>
+        <li><?= $mech['Grade'] ?></li>
+        <li><?= $mech['Series'] ?></li>
+        <li><?= $mech['Release Date'] ?></li>
+        <br>
     <?php endforeach; ?>
 </ul>
 

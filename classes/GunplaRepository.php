@@ -27,14 +27,29 @@ class GunplaRepository
     // Get all
     public function get(): array
     {
+        try {
+            
+            $connection = $this->databaseManager->connection;
         // TODO: Create an SQL query
+            $query = "SELECT * FROM gundam";
+
+            $statement = $connection->query($query);
+
+            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $result;
+            } catch (PDOException $error) {
+            echo "Error: " . $error->getMessage();
+            return [];
+            }
+
         // TODO: Use your database connection (see $databaseManager) and send your query to your database.
         // TODO: fetch your data at the end of that action.
         // TODO: replace dummy data by real one
-        return [
-            ['name' => 'dummy one'],
-            ['name' => 'dummy two'],
-        ];
+        // return [
+        //     ['name' => 'dummy one'],
+        //     ['name' => 'dummy two'],
+        // ];
 
         // We get the database connection first, so we can apply our queries with it
         // return $this->databaseManager->connection-> (runYourQueryHere)
