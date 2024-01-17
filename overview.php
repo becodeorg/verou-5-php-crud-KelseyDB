@@ -11,7 +11,7 @@
   <header>
     <h1>Littlest Mechshop - keep track of your gunpla collection.</h1>
     <ul>
-      <li><a href="?action=create">Add Gunpla</a></li>
+      <li><a href="?action=create">Add a Gundam</a></li>
       <li><a href="?action=edit">Edit existing entry</a></li>
     </ul>
   </header>
@@ -21,7 +21,7 @@
           <li><?= $mech['Name'] ?></li>
           <li><?= $mech['Grade'] ?></li>
           <li><?= $mech['Series'] ?></li>
-          <li><?= $mech['Release Date'] ?></li>
+          <li><?= $mech['Date'] ?></li>
           <br>
       <?php endforeach; ?>
     </ul>

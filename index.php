@@ -48,12 +48,28 @@ function overview()
     require 'overview.php';
 }
 
-function create($databaseManager)
+function create()
 {
-    // TODO: provide the create logic
-    if(isset($_POST['submit'])) {
-        $gunplaRepository = new $gunplaRepository($databaseManager);
-        $gunplaRepository->create();
+    global $gunplaRepository;
+
+
+
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+        
+        $gunplaRepository->create($name, $grade, $series, $date);
+        
+        header('location: ./');
+        exit;
+
     }
     require "create.php";
+
+    
+    // TODO: provide the create logic
+    // if(isset($_POST['submit'])) {
+    //     $gunplaRepository = new $gunplaRepository($databaseManager);
+    //     $gunplaRepository->create();
+    // }
+    // require "create.php";
+
 }

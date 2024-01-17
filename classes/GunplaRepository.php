@@ -13,9 +13,21 @@ class GunplaRepository
         $this->databaseManager = $databaseManager;
     }
 
-    public function create(): void
+    public function create($name, $grade, $series, $date): void
     {
+        $name = $_POST["name"] ?? '';
+        $grade = $_POST["grade"] ?? '';
+        $series = $_POST["series"] ?? '';
+        $date = $_POST["date"] ?? '';
 
+
+        try {
+            $query = "INSERT INTO gundam (Name, Grade, Series, Date) VALUES (?, ?, ?, ?)";
+            $statement = $this->databaseManager->connection->prepare($query);
+            $statement->execute([$name, $grade, $series, $date]);
+        } catch (PDOException $error) {
+            echo $error->getMessage();
+        }
     }
 
     // Get one
@@ -35,7 +47,7 @@ class GunplaRepository
 
             $statement = $connection->query($query);
 
-            $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+            $result = $statement->fetchAll();
             
             return $result;
             } catch (PDOException $error) {
