@@ -24,11 +24,15 @@ $gunpla = $gunplaRepository->get();
 // If nothing is specified, it will remain empty (home should be loaded)
 $action = $_GET['action'] ?? null;
 
+// echo "<pre>";
+// print_r($_SERVER) ;
+// echo "</pre>";
+
 // Load the relevant action
 // This system will help you to only execute the code you want, instead of all of it (or complex if statements)
 switch ($action) {
     case 'create':
-        create();
+        create($databaseManager);
         break;
     default:
         overview();
@@ -37,14 +41,19 @@ switch ($action) {
 
 function overview()
 {
-  global $gunplaRepository; 
-  $gunpla = $gunplaRepository->get();
+    global $gunplaRepository; 
+    $gunpla = $gunplaRepository->get();
     // Load your view
     // Tip: you can load this dynamically and based on a variable, if you want to load another view
     require 'overview.php';
 }
 
-function create()
+function create($databaseManager)
 {
     // TODO: provide the create logic
+    if(isset($_POST['submit'])) {
+        $gunplaRepository = new $gunplaRepository($databaseManager);
+        $gunplaRepository->create();
+    }
+    require "create.php";
 }
