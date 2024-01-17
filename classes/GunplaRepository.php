@@ -31,8 +31,23 @@ class GunplaRepository
     }
 
     // Get one
-    public function find(): array
+    public function find($id): array
     {
+        $id = $_GET["id"];
+        try{
+            $query = "SELECT * FROM gundam WHERE id=?";
+            $statement = $this->databaseManager->connection->prepare($query);
+            $statement->execute([$id]);
+            
+            $result = $statement->fetchAll();
+
+            return $result;
+
+        } catch (PDOException $e) {
+            // Handle any database errors
+            echo "Error: " . $e->getMessage();
+            return [];
+        }
 
     }
 
@@ -42,7 +57,7 @@ class GunplaRepository
         try {
             
             $connection = $this->databaseManager->connection;
-        // TODO: Create an SQL query
+
             $query = "SELECT * FROM gundam";
 
             $statement = $connection->query($query);
@@ -76,5 +91,6 @@ class GunplaRepository
     {
 
     }
+
 
 }

@@ -34,6 +34,9 @@ switch ($action) {
     case 'create':
         create($databaseManager);
         break;
+    case 'edit':
+        edit($databaseManager);
+        break;
     default:
         overview();
         break;
@@ -51,8 +54,6 @@ function overview()
 function create()
 {
     global $gunplaRepository;
-
-
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         
@@ -72,4 +73,19 @@ function create()
     // }
     // require "create.php";
 
+}
+function edit()
+{
+    global $gunplaRepository;
+    $gunpla = $gunplaRepository->find($_GET['id']);
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+        
+
+    }else{
+        $gunplaRepository->find($_GET['id']);
+        require "edit.php";
+    }
+    print_r( $_GET);   
 }

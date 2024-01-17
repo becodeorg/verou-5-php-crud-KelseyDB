@@ -7,12 +7,20 @@
 </head>
 <body>
 <header>
-    <h1>Littlest Mechshop - keep track of your gunpla collection.</h1>
+    <h1>Littlest Mechshop - EDIT GUNPLA</h1>
     <ul>
-      <li><a href="?action=">Home</a></li>
+      <li><a href="./">Home</a></li>
     </ul>
   </header>
   <main>
+  <?php foreach ($gunpla as $mech) : ?>
+
+          <li> Name: <?= $mech['Name'] ?></li>
+          <li> Grade: <?= $mech['Grade'] ?></li>
+          <li> Series:  <?= $mech['Series'] ?></li>
+          <li> Release Date: <?= $mech['Date'] ?></li>
+          <br>
+      <?php endforeach; ?>
     <form action="" method="post">
         <label for="name">Gundam Name:</label><br>
         <input type="text" name="name" id="name"><br>
@@ -22,7 +30,7 @@
         <input type="text" name= "series" id="series"><br>
         <label for="date">Month and year of release:</label><br>
         <input type="text" name="date" id="date" placeholder= "may 2024"><br>
-        <input type="submit" value="Add">
+        <input type="submit" value="Edit">
       </form>
   </main>
 </body>

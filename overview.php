@@ -22,8 +22,13 @@
           <li><?= $mech['Grade'] ?></li>
           <li><?= $mech['Series'] ?></li>
           <li><?= $mech['Date'] ?></li>
+          <!-- <img src="./img/ $mech['img_url']; ?>"> -->
+          <p><a href="?action=edit&id=<?= $mech["ID"] ?>">Edit</a>
+          <br>
+          <a href="?action=remove&id=<?= $mech["ID"] ?>">Remove</a></p>
           <br>
       <?php endforeach; ?>
+      
     </ul>
   </main>
 </body>
